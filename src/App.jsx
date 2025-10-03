@@ -121,15 +121,21 @@ const App = () => {
           <p className="inline-flex  justify-center mb-5 gap-x-2 text-5xl  font-black tracking-wide text-amber-500 my-10">
             Numbers
           </p>
-          <ul className="text-center grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2  items-end gap-x-2">
-            {filteredSearch.map((note) => (
-              <Note
-                key={note.id}
-                note={note}
-                toggleImportance={() => toggleImportanceOf(note.id)}
-              />
-            ))}
-          </ul>
+          {filteredSearch.length > 0 ? (
+            <ul className="text-center grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2  items-end gap-x-2">
+              {filteredSearch.map((note) => (
+                <Note
+                  key={note.id}
+                  note={note}
+                  toggleImportance={() => toggleImportanceOf(note.id)}
+                />
+              ))}
+            </ul>
+          ) : (
+            <div className="text-center text-amber-500/60">
+              <p>Not Found!</p>
+            </div>
+          )}
         </div>
       )}
     </>
